@@ -31,30 +31,32 @@ namespace CyberArtDemo.Interface
         {
             //draw topside
             writeTO("+",StartX,StartY);
-            for (int i = 1; i <= Width-1; i++)
+            for (int i = StartX+1; i <= StartX+Width-1; i++)
             {
                 writeTO("-",i,StartY);
             }
-            writeTO("+",Width-1,StartY);
+            writeTO("+",StartX+Width-1,StartY);
 
             //draw leftside
-            for (int i = 1; i <= Height-2; i++) //Height-2 because "+" was draw by last line
+            //i <= (Start Location)+(Height normalized, start from 0)-(Reserve corner for "+")
+            for (int i = StartY+1; i <= StartY+Height-1-1; i++) 
             {
                 writeTO("|",StartX,i);
             }
             
             //draw underside
-            writeTO("+",StartX,Height-1);
-            for (int i = 1; i <= Width-1; i++)
+            writeTO("+",StartX,StartY+Height-1);
+            for (int i = StartX+1; i <= StartX+Width-1; i++)
             {
-                writeTO("-",i,Height-1);
+                writeTO("-",i,StartY+Height-1);
             }
-            writeTO("+",Width-1,Height-1);
+            writeTO("+",StartX+Width-1,StartY+Height-1);
 
             //draw rightside
-            for (int i = 1; i <= Height-2; i++)
+            //i <= (Start Location)+(Height normalized, start from 0)-(Reserve corner for "+")
+            for (int i = StartY+1; i <= StartY+Height-1-1; i++)
             {
-                writeTO("|",Width-1,i);
+                writeTO("|",StartX+Width-1,i);
             }
         }
     }

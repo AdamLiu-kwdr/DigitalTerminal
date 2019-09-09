@@ -11,6 +11,16 @@ namespace CyberArtDemo
 
         static void Main(string[] args)
         {
+            JournalPage testPage = new JournalPage(){
+                EntryId = "999",
+                EntryTitle="test entry",
+                Author="someone",
+                Location="here",
+                EntryTime = new DateTime(2019,9,9),
+                Contents = new string[]{"hello"}
+            };
+            testPage.Goto();
+
             //Init
              string userName ="";
              Console.Clear();
