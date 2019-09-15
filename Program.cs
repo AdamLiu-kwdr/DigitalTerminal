@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using CyberArtDemo.Interface;
+using System.Collections.Generic;
 
 namespace CyberArtDemo
 {
@@ -17,7 +18,7 @@ namespace CyberArtDemo
                 Author="someone",
                 Location="here",
                 EntryTime = new DateTime(2019,9,9),
-                Contents = new string[]{"hello"}
+                Contents = new List<string>()
             };
             testPage.Goto();
 
