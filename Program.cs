@@ -1,33 +1,50 @@
 ﻿using System;
+using System.Text;
 using System.Threading;
-using CyberArtDemo.Interface;
 using System.Collections.Generic;
+
+using CyberArtDemo.Modules;
+using CyberArtDemo.Pages;
+using CyberArtDemo.Models;
 
 namespace CyberArtDemo
 {
     class Program
     {
-        private static int CursorCurrentX;
-        private static int CursorCurrentY;
 
         static void Main(string[] args)
         {
-            JournalPage testPage = new JournalPage(){
-                EntryId = "999",
-                EntryTitle="test entry",
-                Author="someone",
-                Location="here",
-                EntryTime = new DateTime(2019,9,9),
-                Contents = new List<string>()
-            };
-            testPage.Goto();
+            // //Init
+            // string userName ="";
+            // Console.Clear();
+            // printStartUpScreen();
 
-            //Init
-             string userName ="";
-             Console.Clear();
-             CursorCurrentX = Console.CursorTop;
-             CursorCurrentY = Console.CursorLeft;
+            // //Login Screen
+            // Console.Clear();
+            // ConsoleFunctions.drawRectangle(10,Console.BufferWidth,0,0);
+            // ConsoleFunctions.writeToCenter("Welcome to Autek Mission Server! Please Login:",3);
+            // ConsoleFunctions.writeToCenter("User Name:",6);
+            // userName = Console.ReadLine();
+            // ConsoleFunctions.writeToCenter("User Passwod:",7);
+            // Console.Read();
 
+            // ConsoleFunctions.writeToCenter($"Welcome back {userName}! Preparing user enviorment for you...",11);
+            // Thread.Sleep(3000);
+            // Console.ReadLine();
+
+            //Printing Dashboard(Main menu)
+            MenuPage mainMenu = new MenuPage(
+                "Autek Mission Management system release 2.1.25",
+                "Kernal 5.2.13.AuTek.RISC_V on an RISCV (ttyS1)",
+                new string[]{"Mission Journal","Item Database","Residents Database","On-line Weapons","Body Diagnosis","System Settings","Log out"});
+
+            mainMenu.Show();
+            Console.Clear();
+            Console.WriteLine("Thank you for using Autek Mission Server, good bye!");
+        }
+
+        //ShowStartUp Screen
+        private static void printStartUpScreen(){
             //Pring connecting Screen
             Console.Clear();
             Thread.Sleep(500);
@@ -52,31 +69,6 @@ namespace CyberArtDemo
             }
             Console.Write($"Reached target Multi-User");
             Thread.Sleep(1000);
-
-            //Login Screen
-            Console.Clear();
-            ConsoleFunctions.drawRectangle(10,Console.BufferWidth,0,0);
-            ConsoleFunctions.writeToCenter("Welcome to Autek Mission Server! Please Login:",3);
-            ConsoleFunctions.writeToCenter("User Name:",6);
-            userName = Console.ReadLine();
-            ConsoleFunctions.writeToCenter("User Passwod:",7);
-            Console.Read();
-
-            ConsoleFunctions.writeToCenter($"Welcome back {userName}! Preparing user enviorment for you...",11);
-            Thread.Sleep(3000);
-            Console.ReadLine();
-
-            //Printing Dashboard(Main menu)
-            UIMenu mainMenu = new UIMenu(
-                "Autek Mission Management system release 2.1.25",
-                "Kernal 5.2.13.AuTek.RISC_V on an RISCV (ttyS1)",
-                new string[]{"Mission Journal","Item Database","Residents Database","On-line Weapons","Body Diagnosis","System Settings","Log out"});
-
-            mainMenu.Goto();
-
-            Console.ReadLine();
-            //Leave this at the end or last line will get erased.
-            //Console.SetCursorPosition(0,Console.BufferHeight-1);
         }
     }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace CyberArtDemo.Interface
+namespace CyberArtDemo.Modules
 {
     //For drawing shapes/ writing text to certain position.
     public static class ConsoleFunctions
