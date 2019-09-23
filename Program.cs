@@ -33,14 +33,12 @@ namespace CyberArtDemo
             // Console.ReadLine();
 
             //Printing Dashboard(Main menu)
-            MenuPage mainMenu = new MenuPage(
-                "Autek Mission Management system release 2.1.25",
-                "Kernal 5.2.13.AuTek.RISC_V on an RISCV (ttyS1)",
-                new string[]{"Mission Journal","Item Database","Residents Database","On-line Weapons","Body Diagnosis","System Settings","Log out"});
+            MainMenuModule MMenuModule = new MainMenuModule();
+            MMenuModule.showMainMenu(); //This method will lock the thread until logout.
 
-            mainMenu.Show();
+            //Menu exited, Clean up code here before shutdown.
             Console.Clear();
-            Console.WriteLine("Thank you for using Autek Mission Server, good bye!");
+            Console.Write("Thank you for using Autek Mission Server, Good bye!");
         }
 
         //ShowStartUp Screen

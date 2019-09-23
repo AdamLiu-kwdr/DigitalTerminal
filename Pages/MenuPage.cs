@@ -11,49 +11,38 @@ namespace CyberArtDemo.Pages
         private string _MenuTitle = "";
         private string _MenuSubTitle = "";
 
-        private string[] _Options = {};
+        private string[] _MenuOptions = {};
 
         private int selectedOption = 1;
 
+        //Set to True for leaving menu
         bool isFinished = false;
 
-        //Properties
-        public string getTitle { get{return _MenuTitle;}}
-        public string getSubTitle { get{return _MenuSubTitle;}}
-        public string[] GetOptions {get{return _Options;}}
+        //Event for selecting an option (User press enter), int for index of selected option.
+        public event EventHandler<int> OptionSelected;
 
-        public MenuPage(string Title,string SubTitle,string[] Options){
+
+
+        public MenuPage(string Title,string SubTitle,string[] MenuOptions){
             _MenuTitle = Title;
             _MenuSubTitle = SubTitle;
-            _Options = Options;
+            _MenuOptions = MenuOptions;
         }
 
         //Show this menu to the screen
         public void Show()
         {
-            //Draw blocks and menu properties
-            Console.Clear();
-            Console.WriteLine();
-            ConsoleFunctions.drawRectangle(15,Console.BufferWidth-1,0,0);
-            ConsoleFunctions.writeToCenter(_MenuTitle,1);
-            ConsoleFunctions.writeToCenter(_MenuSubTitle,2);
-
-            //Display all Options
-            for (int i = 0; i < _Options.Length; i++)
-            {
-                Thread.Sleep(30);
-                ConsoleFunctions.writeToCenter($"({i+1}) {_Options[i].ToString()}",4+i);
-            }
-
+            InitScreen();
             //Remember current background/text color
             var currentBgColor = Console.BackgroundColor;
             var currentTxtColor = Console.ForegroundColor;
-            //Draw selected option and wait for input
+            
+            //Keep in this menu until isFinished = true
             while (!isFinished)
             {
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Black;
-                ConsoleFunctions.writeToCenter($"({selectedOption}) {_Options[selectedOption-1].ToString()}",4+selectedOption-1);
+                ConsoleFunctions.writeToCenter($"({selectedOption}) {_MenuOptions[selectedOption-1].ToString()}",4+selectedOption-1);
                 Console.ForegroundColor = currentTxtColor;
                 Console.BackgroundColor = currentBgColor;
                 
@@ -68,31 +57,51 @@ namespace CyberArtDemo.Pages
                             selectedOption --;
                         }
                         break;
+                    
                     case ConsoleKey.DownArrow:
-                        if (!(selectedOption == _Options.Length))
+                        if (!(selectedOption == _MenuOptions.Length))
                         {
                             selectedOption ++;
                         }
                         break;
+
+                    //Raise OptionSelected event with SelectedOption
                     case ConsoleKey.Enter:
-                        goToOption(selectedOption);
+                        OptionSelected.Invoke(this,selectedOption);
+                        InitScreen(); //Reinit the screen after returning to this menu
+                        break;
+                    
+                    //Exit Menu
+                    case ConsoleKey.Backspace:
+                        isFinished = true;
                         break;
                 }
-
-                // Draw the options again
-                for (int i = 0; i < _Options.Length; i++)
+                //draw all Options again
+                for (int i = 0; i < _MenuOptions.Length; i++)
                 {
-                    ConsoleFunctions.writeToCenter($"({i+1}) {_Options[i].ToString()}",4+i);
+                    ConsoleFunctions.writeToCenter($"({i+1}) {_MenuOptions[i].ToString()}",4+i);
                 }
             }
         }
-        
-        public void goToOption(int option)
-        {
-            if (selectedOption == 7)
+
+        //Init Menu screen
+        private void InitScreen(){
+            //Draw blocks and menu properties
+            Console.Clear();
+            Console.WriteLine();
+            ConsoleFunctions.drawRectangle(15,Console.BufferWidth-1,0,0);
+            ConsoleFunctions.writeToCenter(_MenuTitle,1);
+            ConsoleFunctions.writeToCenter(_MenuSubTitle,2);
+
+            //Display all Options
+            for (int i = 0; i < _MenuOptions.Length; i++)
             {
-                isFinished = true;
+                Thread.Sleep(30);
+                ConsoleFunctions.writeToCenter($"({i+1}) {_MenuOptions[i].ToString()}",4+i);
             }
+
+            //Write instructions
+            ConsoleFunctions.writeToCenter("[Up]:Previous      [Down]:Next      [Enter]:Select      [Backspace]:Exit",15);
         }
     }
 }

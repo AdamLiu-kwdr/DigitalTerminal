@@ -19,7 +19,8 @@ namespace CyberArtDemo.Pages
 
         public void Show(int? page=1) //Display this Journal Page (Entry)
         {
-            while (true)
+            bool finished = false; //Temp
+            while (!finished)
             {
                 Console.Clear();
                 //Draw blocks
@@ -57,6 +58,9 @@ namespace CyberArtDemo.Pages
                         break;
                     case ConsoleKey.RightArrow:
                         page = 2; 
+                    break;
+                    case ConsoleKey.Backspace:
+                        finished = true;
                     break;
                 }    
             }
