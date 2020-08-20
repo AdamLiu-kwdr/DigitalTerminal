@@ -15,22 +15,22 @@ namespace CyberArtDemo
         static void Main(string[] args)
         {
             // //Init
-            // string userName ="";
-            // Console.Clear();
-            // printStartUpScreen();
+            string userName = "";
+            Console.Clear();
+            printStartUpScreen();
 
             // //Login Screen
-            // Console.Clear();
-            // ConsoleFunctions.drawRectangle(10,Console.BufferWidth,0,0);
-            // ConsoleFunctions.writeToCenter("Welcome to Autek Mission Server! Please Login:",3);
-            // ConsoleFunctions.writeToCenter("User Name:",6);
-            // userName = Console.ReadLine();
-            // ConsoleFunctions.writeToCenter("User Passwod:",7);
-            // Console.Read();
+            Console.Clear();
+            ConsoleFunctions.drawRectangle(10, Console.BufferWidth, 0, 0);
+            ConsoleFunctions.writeToCenter("Welcome to Autek Mission Server! Please Login:", 3);
+            ConsoleFunctions.writeToCenter("User Name:", 6);
+            userName = Console.ReadLine();
+            ConsoleFunctions.writeToCenter("User Passwod:", 7);
+            Console.Read();
 
-            // ConsoleFunctions.writeToCenter($"Welcome back {userName}! Preparing user enviorment for you...",11);
-            // Thread.Sleep(3000);
-            // Console.ReadLine();
+            ConsoleFunctions.writeToCenter($"Welcome back {userName}! Preparing user enviorment for you...", 11);
+            Thread.Sleep(3000);
+            Console.ReadLine();
 
             //Printing Dashboard(Main menu)
             MainMenuModule MMenuModule = new MainMenuModule();
@@ -42,7 +42,8 @@ namespace CyberArtDemo
         }
 
         //ShowStartUp Screen
-        private static void printStartUpScreen(){
+        private static void printStartUpScreen()
+        {
             //Pring connecting Screen
             Console.Clear();
             Thread.Sleep(500);
@@ -61,7 +62,7 @@ namespace CyberArtDemo
             foreach (var Daemon in Daemons)
             {
                 Console.Write($"Starting: {Daemon}");
-                Console.SetCursorPosition(70,Console.CursorTop);
+                Console.SetCursorPosition(70, Console.CursorTop);
                 Console.WriteLine("[  ok  ]");
                 Thread.Sleep(60);
             }

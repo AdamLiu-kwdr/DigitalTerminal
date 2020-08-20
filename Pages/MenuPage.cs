@@ -87,6 +87,7 @@ namespace CyberArtDemo.Pages
         //Init Menu screen
         private void InitScreen(){
             //Draw blocks and menu properties
+            
             Console.Clear();
             Console.WriteLine();
             ConsoleFunctions.drawRectangle(15,Console.BufferWidth-1,0,0);
