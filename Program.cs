@@ -3,11 +3,11 @@ using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 
-using CyberArtDemo.Modules;
-using CyberArtDemo.Pages;
-using CyberArtDemo.Models;
+using DigitalTerminal.Modules;
+using DigitalTerminal.Pages;
+using DigitalTerminal.Models;
 
-namespace CyberArtDemo
+namespace DigitalTerminal
 {
     class Program
     {

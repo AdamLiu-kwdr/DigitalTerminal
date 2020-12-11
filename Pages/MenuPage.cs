@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 
-using CyberArtDemo.Modules;
+using DigitalTerminal.Modules;
 
-namespace CyberArtDemo.Pages
+namespace DigitalTerminal.Pages
 {
     //A class represents A menu screen
     public class MenuPage

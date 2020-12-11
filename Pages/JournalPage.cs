@@ -4,10 +4,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
-using CyberArtDemo.Modules;
-using CyberArtDemo.Models;
+using DigitalTerminal.Modules;
+using DigitalTerminal.Models;
 
-namespace CyberArtDemo.Pages
+namespace DigitalTerminal.Pages
 {
     public class JournalPage
     {

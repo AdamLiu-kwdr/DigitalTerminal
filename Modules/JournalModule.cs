@@ -2,10 +2,10 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 
-using CyberArtDemo.Models;
-using CyberArtDemo.Pages;
+using DigitalTerminal.Models;
+using DigitalTerminal.Pages;
 
-namespace CyberArtDemo.Modules
+namespace DigitalTerminal.Modules
 {
     public class JournalModule
     {

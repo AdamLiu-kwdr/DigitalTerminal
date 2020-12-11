@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CyberArtDemo.Models
+namespace DigitalTerminal.Models
 {
     public class Journal
     {

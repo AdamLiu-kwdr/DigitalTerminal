@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 
-using CyberArtDemo.Pages;
+using DigitalTerminal.Pages;
 
-namespace CyberArtDemo.Modules
+namespace DigitalTerminal.Modules
 {
     //This module controlls Main Menu related functions
     public class MainMenuModule
