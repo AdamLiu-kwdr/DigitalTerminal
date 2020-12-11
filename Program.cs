@@ -39,6 +39,8 @@ namespace DigitalTerminal
             //Menu exited, Clean up code here before shutdown.
             Console.Clear();
             Console.Write("Thank you for using Autek Mission Server, Good bye!");
+
+            Console.ReadKey();
         }
 
         //ShowStartUp Screen
